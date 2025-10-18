@@ -14,6 +14,15 @@
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>The nzmacgeek-recipes repository, which contains this recipe, is deprecated and will be archived soon (details: https://github.com/autopkg/nzmacgeek-recipes/issues/17). Consider switching to the Authy Desktop recipes in dataJAR-recipes.</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>

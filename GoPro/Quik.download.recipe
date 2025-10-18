@@ -16,6 +16,15 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>warning_message</key>
+				<string>This recipe will soon be removed. The signing certificate has expired and GoPro considers the app legacy. There will be no future updates. https://community.gopro.com/s/article/GoPro-legacy-software</string>
+			</dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>filename</key>
 				<string>quik.dmg</string>
 				<key>url</key>
