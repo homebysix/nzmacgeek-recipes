@@ -1,38 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-  <dict>
-    <key>Description</key>
-    <string>Downloads latest Osculator package</string>
-    <key>Identifier</key>
-    <string>com.github.nzmacgeek.osculator.download</string>
-    <key>Input</key>
-    <dict>
-      <key>NAME</key>
-      <string>Osculator</string>
-    </dict>
-    <key>Process</key>
-    <array>
-    <dict>
-      <key>Processor</key>
-      <string>URLTextSearcher</string>
-      <key>Arguments</key>
-      <dict>
-        <key>url</key>
-        <string>http://www.osculator.net/downloadthanks.php?stable=</string>
-        <key>re_pattern</key>
-        <string>'(http://dl.osculator.net/releases/osculator-.*.dmg)'</string>
-      </dict>
-    </dict>
-    <dict>
-      <key>Processor</key>
-      <string>URLDownloader</string>
-      <key>Arguments</key>
-      <dict>
-        <key>url</key>
-        <string>%match%</string>
-      </dict>
-    </dict>
-  </array>
-  </dict>
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Osculator package</string>
+	<key>Identifier</key>
+	<string>com.github.nzmacgeek.osculator.download</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Osculator</string>
+	</dict>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>The nzmacgeek-recipes repository, which contains this recipe, is deprecated and will be archived soon (details: https://github.com/autopkg/nzmacgeek-recipes/issues/17). Consider switching to the OSCulator 3 recipes in the dataJAR-recipes repo.</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>'(http://dl.osculator.net/releases/osculator-.*.dmg)'</string>
+				<key>url</key>
+				<string>http://www.osculator.net/downloadthanks.php?stable=</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%match%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+	</array>
+</dict>
 </plist>

@@ -2,65 +2,74 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Downloads latest Authy Desktop full installer disk image</string>
-    <key>Identifier</key>
-    <string>com.github.nzmacgeek.download.authy</string>
-    <key>Input</key>
-    <dict>
-        <key>NAME</key>
-        <string>Authy Desktop</string>
-    </dict>
-    <key>Process</key>
-    <array>
+	<key>Description</key>
+	<string>Downloads latest Authy Desktop full installer disk image</string>
+	<key>Identifier</key>
+	<string>com.github.nzmacgeek.download.authy</string>
+	<key>Input</key>
 	<dict>
-	    <key>Processor</key>
-	    <string>URLTextSearcher</string>
-	    <key>Arguments</key>
-	    <dict>
-		<key>url</key>
-		<string>https://authy.com/download/</string>
-		<key>result_output_var_name</key>
-		<string>url_to_download</string>
-		<key>re_pattern</key>
-		<string>value="(https://electron.*platform=darwin.*)"&gt;macOS</string>
-	    </dict>
+		<key>NAME</key>
+		<string>Authy Desktop</string>
 	</dict>
-        <dict>
-            <key>Processor</key>
-            <string>URLDownloader</string>
-	    <key>Arguments</key>
-	    <dict>
-		<key>url</key>
-		<string>%url_to_download%</string>
-		<key>filename</key>
-		<string>AuthyDesktop.dmg</string>
-	    </dict>
-        </dict>
-	<dict>
-		<key>Processor</key>
-		<string>EndOfCheckPhase</string>
-	</dict>
-	<dict>
-		<key>Arguments</key>
+	<key>Process</key>
+	<array>
 		<dict>
-			<key>input_path</key>
-			<string>%pathname%/Authy Desktop.app</string>
-			<key>requirement</key>
-			<string>identifier "com.authy.authy-mac" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "9EVH78F4V4"</string>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>The nzmacgeek-recipes repository, which contains this recipe, is deprecated and will be archived soon (details: https://github.com/autopkg/nzmacgeek-recipes/issues/17). Consider switching to the Authy Desktop recipes in dataJAR-recipes.</string>
+			</dict>
 		</dict>
-		<key>Processor</key>
-		<string>CodeSignatureVerifier</string>
-	</dict>
-        <dict>
-                <key>Processor</key>
-                <string>Versioner</string>
-                <key>Arguments</key>
-                <dict>
-                        <key>input_plist_path</key>
-                        <string>%pathname%/Authy Desktop.app/Contents/Info.plist</string>
-                </dict>
-        </dict>
-    </array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>value="(https://electron.*platform=darwin.*)"&gt;macOS</string>
+				<key>result_output_var_name</key>
+				<string>url_to_download</string>
+				<key>url</key>
+				<string>https://authy.com/download/</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>AuthyDesktop.dmg</string>
+				<key>url</key>
+				<string>%url_to_download%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Authy Desktop.app</string>
+				<key>requirement</key>
+				<string>identifier "com.authy.authy-mac" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "9EVH78F4V4"</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pathname%/Authy Desktop.app/Contents/Info.plist</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+	</array>
 </dict>
 </plist>
